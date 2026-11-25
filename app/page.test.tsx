@@ -1,9 +1,22 @@
-import { render, screen } from "@testing-library/react";
-import { expect, test } from "vitest";
+import { cleanup, render, screen } from "@testing-library/react";
+import { afterEach, expect, test } from "vitest";
 import Home from "./page";
 
-test("shows the Hello World heading", () => {
+afterEach(cleanup);
+
+test("shows the name heading", () => {
   render(<Home />);
-  expect(screen.getByText("Gal Amano")).toBeDefined();
-  expect(screen.getByText("Hello World")).toBeDefined();
+  expect(screen.getByRole("heading", { name: "Gal Amano" })).toBeDefined();
+});
+
+test("no longer shows Hello World", () => {
+  render(<Home />);
+  expect(screen.queryByText("Hello World")).toBeNull();
+});
+
+test("shows the guess the number game", () => {
+  render(<Home />);
+  expect(
+    screen.getByRole("heading", { name: "Guess the number" }),
+  ).toBeDefined();
 });
