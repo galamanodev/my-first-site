@@ -1,3 +1,5 @@
+import GuessNumberGame from "./components/GuessNumberGame";
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-1 flex-col items-center justify-center gap-6 bg-black px-6 text-center">
@@ -7,6 +9,9 @@ export default function Home() {
       <p className="text-xl font-light uppercase tracking-[0.5em] text-zinc-400 sm:text-3xl">
         Hello World
       </p>
+      <div className="mt-10 flex w-full justify-center">
+        <GuessNumberGame />
+      </div>
     </main>
   );
 }
